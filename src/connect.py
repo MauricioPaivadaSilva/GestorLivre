@@ -1,6 +1,6 @@
 import sqlite3 as db
 
-class register:
+class connect:
     def __init__(self, author, title, edition, local, editor, date, tfile):
         self.author = author
         self.title = title
@@ -80,6 +80,6 @@ class register:
 
         result = cursor.fetchall()
 
-        print(result)
-
         con.close()
+
+        return result
