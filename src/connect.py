@@ -1,9 +1,3 @@
-# Criar a comunicação com o DB em forma de "API", que ira utilizar as informações mínimas estipuladas em #1.
-
-# A comunicação deve ser feita em duas etapas, esta primeira etapa ficará responsável por registrar as informações no banco de dados.
-
-# Ainda não haverá o banco de dados, apenas será feito o modelo para o registro!
-
 import sqlite3 as db
 
 class register:
