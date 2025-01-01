@@ -34,7 +34,7 @@ class register:
             code = code + "_" + title.split(" ")[0].upper()
             subtitle = name[1].strip()
         else:
-            title = self.name
+            title = self.title
 
         if self.tfile == "Livro":
             reference = "@book{" + code + self.date + ", author={" + author + "}, title={" + title + "}, subtitle={" + subtitle + "}, year={" + self.date + "}, publisher={" + self.editor + "}, address={" + self.local + "}, edition={" + self.edition + "},}"
@@ -43,9 +43,9 @@ class register:
         else:
             reference = "@inproceedings{" + code + self.date + ", author={" + author + "}, title={" + title + "}, subtitle={" + subtitle + "}, year={" + self.date + "}, publisher={" + self.editor + "}, address={" + self.local + "}, edition={" + self.edition + "},}"
         
-        self.connect(reference=reference)
+        self.save(reference=reference)
 
-    def connect(self, reference):
+    def save(self, reference):
         con = db.connect("data.db")
 
         cursor = con.cursor()
@@ -69,4 +69,17 @@ class register:
         ''', (self.title, self.author, self.local, self.edition, self.editor, self.date, reference, self.tfile))
 
         con.commit()
+        con.close()
+
+    def find(term):
+        con = db.connect("data.db")
+
+        cursor = con.cursor()
+
+        cursor.execute('SELECT * FROM docs WHERE title LIKE ? OR author LIKE ?', ('%' + term + '%', '%' + term + '%'))
+
+        result = cursor.fetchall()
+
+        print(result)
+
         con.close()
