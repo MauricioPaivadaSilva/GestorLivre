@@ -1,7 +1,7 @@
 import tkinter as tk
 
 class view:
-    def __init__(self, result):
+    def __init__(self, result, theme):
 
         fontB = "Times 12 bold"
         font = "Times 12"
@@ -9,45 +9,46 @@ class view:
         self.root = tk.Tk()
         self.root.title(result[1])
         self.root.geometry("1200x675")
+        self.root.configure(bg=theme)
 
-        self.title = tk.Label(self.root, text="Título:", font=fontB)
+        self.title = tk.Label(self.root, text="Título:", font=fontB, bg=theme)
         self.title.grid(row=0, column=0, padx=10, pady=5, sticky="w")
-        self.titleInfo = tk.Message(self.root, text=result[1], font=font, anchor="w", width=500)
+        self.titleInfo = tk.Message(self.root, text=result[1], font=font, anchor="w", width=500, bg=theme)
         self.titleInfo.grid(row=0, column=1, padx=10, pady=5, sticky="w")
 
-        self.author = tk.Label(self.root, text="Autor:", font=fontB)
+        self.author = tk.Label(self.root, text="Autor:", font=fontB, bg=theme)
         self.author.grid(row=1, column=0, padx=10, pady=5, sticky="w")
-        self.authorInfo = tk.Message(self.root, text=result[2], font=font, anchor="w", width=500)
+        self.authorInfo = tk.Message(self.root, text=result[2], font=font, anchor="w", width=500, bg=theme)
         self.authorInfo.grid(row=1, column=1, padx=10, pady=5, sticky="w")
 
-        self.key = tk.Label(self.root, text="Chamada:", font=fontB)
+        self.key = tk.Label(self.root, text="Chamada:", font=fontB, bg=theme)
         self.key.grid(row=2, column=0, padx=10, pady=5, sticky="w")
-        self.keyInfo = tk.Message(self.root, text=result[0], font=font, anchor="w", width=500)
+        self.keyInfo = tk.Message(self.root, text=result[0], font=font, anchor="w", width=500, bg=theme)
         self.keyInfo.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
-        self.local = tk.Label(self.root, text="Local:", font=fontB)
+        self.local = tk.Label(self.root, text="Local:", font=fontB, bg=theme)
         self.local.grid(row=3, column=0, padx=10, pady=5, sticky="w")
-        self.localInfo = tk.Message(self.root, text=result[3], font=font, anchor="w", width=500)
+        self.localInfo = tk.Message(self.root, text=result[3], font=font, anchor="w", width=500, bg=theme)
         self.localInfo.grid(row=3, column=1, padx=10, pady=5, sticky="w")
 
-        self.edition = tk.Label(self.root, text="Edição:", font=fontB)
+        self.edition = tk.Label(self.root, text="Edição:", font=fontB, bg=theme)
         self.edition.grid(row=4, column=0, padx=10, pady=5, sticky="w")
-        self.editionInfo = tk.Message(self.root, text=result[4], font=font, anchor="w", width=500)
+        self.editionInfo = tk.Message(self.root, text=result[4], font=font, anchor="w", width=500, bg=theme)
         self.editionInfo.grid(row=4, column=1, padx=10, pady=5, sticky="w")
 
-        self.editor = tk.Label(self.root, text="Editora:", font=fontB)
+        self.editor = tk.Label(self.root, text="Editora:", font=fontB, bg=theme)
         self.editor.grid(row=5, column=0, padx=10, pady=5, sticky="w")
-        self.editorInfo = tk.Message(self.root, text=result[5], font=font, anchor="w", width=500)
+        self.editorInfo = tk.Message(self.root, text=result[5], font=font, anchor="w", width=500, bg=theme)
         self.editorInfo.grid(row=5, column=1, padx=10, pady=5, sticky="w")
 
-        self.date = tk.Label(self.root, text="Data:", font=fontB)
+        self.date = tk.Label(self.root, text="Data:", font=fontB, bg=theme)
         self.date.grid(row=6, column=0, padx=10, pady=5, sticky="w")
-        self.dateInfo = tk.Message(self.root, text=result[6], font=font, anchor="w", width=500)
+        self.dateInfo = tk.Message(self.root, text=result[6], font=font, anchor="w", width=500, bg=theme)
         self.dateInfo.grid(row=6, column=1, padx=10, pady=5, sticky="w")
 
-        self.type = tk.Label(self.root, text="Tipo:", font=fontB)
+        self.type = tk.Label(self.root, text="Tipo:", font=fontB, bg=theme)
         self.type.grid(row=6, column=0, padx=10, pady=5, sticky="w")
-        self.typeInfo = tk.Message(self.root, text=result[8], font=font, anchor="w", width=500)
+        self.typeInfo = tk.Message(self.root, text=result[8], font=font, anchor="w", width=500, bg=theme)
         self.typeInfo.grid(row=6, column=1, padx=10, pady=5, sticky="w")
 
         name = result[2].split(" ")
@@ -64,7 +65,7 @@ class view:
         else:
             comp = result[1]
 
-        self.referenceABNT = tk.Label(self.root, text="Referência ABNT:", font=fontB)
+        self.referenceABNT = tk.Label(self.root, text="Referência ABNT:", font=fontB, bg=theme)
         self.referenceABNT.grid(row=7, column=0, padx=10, pady=5, sticky="w")
         self.referenceABNTInfo = tk.Text(self.root, font=font, wrap="word", width=60, height=5)
         self.referenceABNTInfo.grid(row=7, column=1, padx=10, pady=5, sticky="w")
