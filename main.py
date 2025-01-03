@@ -7,8 +7,10 @@
 # Importante: Deve haver um seletor de tipo de documento (livro, artigo, revista,...)
 
 import tkinter as tk
+from functools import partial
 
 from src.connect import connect
+from src.view import view
 
 DARKPURPLE = "#301934"
 PURPLE = "#800080"
@@ -49,7 +51,7 @@ def window_find():
         term = arg.get()
         results = connect.find(term=term)
         for i, result in enumerate(results):
-            result_button = tk.Button(down, text=f"{result[1]} - {result[2]}", font="Times 14", anchor="w", bg=LIGHTPURPLE)
+            result_button = tk.Button(down, text=f"{result[1]} - {result[2]}", font="Times 14", anchor="w", bg=LIGHTPURPLE, command=partial(view, result=result))
             result_button.grid(row=i+1, column=0, padx=10, pady=5, columnspan=2, sticky="w")
 
     arg = tk.Entry(up, width=40, font="Times 12")
