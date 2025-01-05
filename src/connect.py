@@ -1,5 +1,7 @@
 import sqlite3 as db
 
+ROUTEV100 = "C:\\GestorLivre\\v100.db"
+
 class connect:
     def __init__(self, author, title, edition, local, editor, date, tfile):
         self.author = author
@@ -46,7 +48,8 @@ class connect:
         self.save(reference=reference)
 
     def save(self, reference):
-        con = db.connect("data.db")
+        global ROUTEV100
+        con = db.connect(ROUTEV100)
 
         cursor = con.cursor()
 
@@ -72,7 +75,8 @@ class connect:
         con.close()
 
     def find(term):
-        con = db.connect("data.db")
+        global ROUTEV100
+        con = db.connect(ROUTEV100)
 
         cursor = con.cursor()
 
