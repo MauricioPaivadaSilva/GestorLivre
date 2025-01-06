@@ -19,11 +19,24 @@ def menu():
     mb = tk.Menu(root)
     mb.add_command(label="Procurar", command=window_find)
     mb.add_command(label="Cadastrar", command=window_register)
+    mb.add_command(label="Sobre", command=popup)
     root.config(menu=mb)
 
 def clear():
     for widget in root.winfo_children():
         widget.destroy()
+
+def popup():
+    MESSAGE = "Desenvolvedor: Maurício Paiva da Silva\nVersão do programa: v1.0.0"
+    popup = tk.Toplevel()
+    popup.title("Sobre")
+    popup.minsize(500, 200)
+    popup.maxsize(500, 200)
+    content = tk.Message(popup, text=MESSAGE, width=450)
+    content.pack(pady=10)
+
+    closed = tk.Button(popup, text="Fechar", command=popup.destroy)
+    closed.pack(pady=10)
 
 def window_find():
     clear()
@@ -42,10 +55,14 @@ def window_find():
             widget.destroy()
 
         term = arg.get()
-        results = connect.find(term=term)
-        for i, result in enumerate(results):
-            result_button = tk.Button(down, text=f"{result[1]} - {result[2]}", font="Times 14", anchor="w", bg=LIGHTPURPLE, command=partial(view, result=result, theme=LIGHTPURPLE))
-            result_button.grid(row=i+1, column=0, padx=10, pady=5, columnspan=2, sticky="w")
+        try:
+            results = connect.find(term=term)
+            for i, result in enumerate(results):
+                result_button = tk.Button(down, text=f"{result[1]} - {result[2]}", font="Times 14", anchor="w", bg=LIGHTPURPLE, command=partial(view, result=result, theme=LIGHTPURPLE))
+                result_button.grid(row=i+1, column=0, padx=10, pady=5, columnspan=2, sticky="w")
+        except:
+            message = tk.Message(down, text=f"{term} não encontrado na base de dados.", font="Times 14", anchor="w", bg=LIGHTPURPLE, width=500)
+            message.grid(row=1, column=0, padx=10, pady=5, sticky="w")
 
     arg = tk.Entry(up, width=40, font="Times 12")
     arg.grid(row=0, column=1, padx=10, pady=10)
